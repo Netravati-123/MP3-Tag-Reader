@@ -12,7 +12,13 @@ typedef enum
 typedef struct
 {
     FILE *fptr_mp3;
+    FILE *fptr_temp;
 } Mp3TagReader;
 
+typedef struct
+{
+    char *tag;
+    char *new_data;
+}EditInfo;
 
 #endif
