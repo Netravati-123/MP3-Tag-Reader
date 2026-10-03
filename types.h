@@ -15,10 +15,10 @@ typedef struct
     FILE *fptr_temp;
 } Mp3TagReader;
 
-typedef struct
+/*typedef struct
 {
     char *tag;
     char *new_data;
-}EditInfo;
+}EditInfo;*/
 
 #endif

@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     Mp3TagReader mp3;
     char tag[5];
 
-    if(argc < 2)
+    if(argc < 3)
     {
         printf("ERROR: Insufficient arguments\n");
         return 0;
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
             return 0;
         }
 
-        if(strcmp(argv[2], "-t") != 0 &&
+        /*if(strcmp(argv[2], "-t") != 0 &&
            strcmp(argv[2], "-a") != 0 &&
            strcmp(argv[2], "-A") != 0 &&
            strcmp(argv[2], "-y") != 0 &&
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
         {
             printf("ERROR: Invalid tag option\n");
             return 0;
-        }
+        }*/
 
         if(strcmp(argv[2], "-t") == 0)
         {
@@ -95,9 +95,14 @@ int main(int argc, char *argv[])
         {
             strcpy(tag, "TCON");
         }
-        else
+        else if(strcmp(argv[2],"-c")==0)
         {
             strcpy(tag, "COMM");
+        }
+        else
+        {
+            printf("Error:Invalid tag option\n");
+            return 0;
         }
 
         if(open_mp3_file(&mp3, argv[4]) == e_failure)
@@ -113,11 +118,11 @@ int main(int argc, char *argv[])
             return 0;
         }
 
-        printf("Valid MP3 file\n");
+        /*printf("Valid MP3 file\n");
         printf("ID3 signature found\n");
 
         printf("Tag to edit : %s\n", tag);
-        printf("New data    : %s\n", argv[3]);
+        printf("New data    : %s\n", argv[3]);*/
 
         if(edit_tag(&mp3, tag, argv[3]) == e_failure)
         {
